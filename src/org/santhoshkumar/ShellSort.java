@@ -12,12 +12,21 @@ public class ShellSort {
     }
 
     public void sort(){
-
+        for(int gap= values.length/2; gap > 0 ; gap = (gap == 2 ? 1: (int)(gap/2.2))){
+            for(int i = gap ; i < values.length; i++){
+                int j = i;
+                int cmpItem = values[j];
+                for( ; j >= gap && cmpItem < values[j-gap]; j -= gap){
+                    values[j] = values[j-gap];
+                }
+                values[j] = cmpItem;
+            }
+        }
     }
 
     public void print(){
         for (int i=0; i < values.length; i++){
-            System.out.print(values[i]);
+            System.out.print(values[i]+" ");
         }
         System.out.println();
     }
